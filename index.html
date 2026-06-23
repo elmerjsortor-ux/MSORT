@@ -492,6 +492,68 @@
             margin-top: 25px;
         }
 
+        /* NUEVA VENTANA DE IMÁGENES EXTRAÍDAS DEL PDF */
+        .extracted-gallery-section {
+            background-color: var(--blanco-puro);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 15px 40px rgba(6, 22, 44, 0.05);
+            margin-top: 40px;
+            border-top: 4px solid var(--acento-tecnologico);
+        }
+
+        .image-window-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .window-card {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .window-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(6, 22, 44, 0.08);
+        }
+
+        .window-card-img-wrapper {
+            width: 100%;
+            height: 380px;
+            background-color: #E2E8F0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .window-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .window-card-info {
+            padding: 20px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .window-card-info h4 {
+            font-size: 1.05rem;
+            color: var(--secundario-oscuro);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .window-card-info p {
+            font-size: 0.85rem;
+            color: #556B85;
+        }
+
         /* Ventana o Formulario Expandido para Carga de Currículums */
         .window-section {
             background-color: var(--blanco-puro);
@@ -746,7 +808,7 @@
                         • <strong>Indicador de Eficiencia (Mantenimiento Técnico):</strong> Control riguroso orientado a asegurar que el 100% de los mantenimientos preventivos y correctivos de sistemas de climatización programados se ejecuten exactamente en el tiempo previsto.
                     </div>
                     <div class="cv-item">
-                        • <strong>Indicador de Eficacia (Calidad y Clientes):</strong> Supervisión analítica y ejecución operativa dirigida a alcanzar y sostener un nivel de satisfacción total del cliente igual o superior al 90% en instalaciones térmicas industriales.
+                        • <strong>Indicador de Eficacia (Calidad y Clientes):</strong> Supervisión analítica y ejecución operativa dirigida a alcanzar and sostener un nivel de satisfacción total del cliente igual o superior al 90% en instalaciones térmicas industriales.
                     </div>
                 </div>
 
@@ -754,12 +816,61 @@
         </section>
 
         <section id="documentacion-pdf" class="pdf-viewer-section">
-            <h2 class="section-title" style="color: var(--secundario-oscuro);">Documentación de Ingeniería y Vacantes</h2>
+            <h2 class="section-title" style="color: var(--secundario-oscuro);">Documentación de Ingeniería</h2>
             <p style="text-align: center; font-size: 0.95rem; color: #556B85; max-width: 850px; margin: 0 auto;">
-                Explore el catálogo técnico completo de perfiles de vacantes operativas de ingeniería HVAC y galerías de diseño corporativo directamente desde el lector interactivo integrado de la plataforma.
+                Explore el archivo técnico completo de perfiles de vacantes operativas de ingeniería HVAC y reglamentos de diseño corporativo.
             </p>
             <div class="pdf-frame-container">
                 <embed src="Ingeniero de Proyectos HVAC - MSORT AIR.pdf" type="application/pdf" width="100%" height="100%" />
+            </div>
+        </section>
+
+        <section class="extracted-gallery-section">
+            <h2 class="section-title">Ventana de Ofertas de Empleo (Imágenes Detalladas)</h2>
+            <p style="text-align: center; font-size: 0.95rem; color: #556B85; max-width: 750px; margin: 0 auto;">
+                Visualización individual en alta definición de las convocatorias vigentes extraídas de nuestro catálogo institucional.
+            </p>
+            
+            <div class="image-window-grid">
+                <div class="window-card">
+                    <div class="window-card-img-wrapper">
+                        <img src="vacante_ingeniero.jpg" alt="Ingeniero de Proyectos HVAC" class="window-card-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=padding:40px;text-align:center;color:#A0AEC0;font-weight:600;>[Imagen: Ingeniero de Proyectos HVAC]<br><span style=font-size:0.75rem;font-weight:normal;>(Carga vacante_ingeniero.jpg)</span></div>'">
+                    </div>
+                    <div class="window-card-info">
+                        <h4>Ingeniero de Proyectos HVAC</h4>
+                        <p>Área: Ingeniería y Desarrollo Industrial</p>
+                    </div>
+                </div>
+
+                <div class="window-card">
+                    <div class="window-card-img-wrapper">
+                        <img src="vacante_ventas.jpg" alt="Ejecutivo de Ventas Corporativas" class="window-card-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=padding:40px;text-align:center;color:#A0AEC0;font-weight:600;>[Imagen: Ventas Corporativas B2B]<br><span style=font-size:0.75rem;font-weight:normal;>(Carga vacante_ventas.jpg)</span></div>'">
+                    </div>
+                    <div class="window-card-info">
+                        <h4>Ejecutivo(a) de Ventas Corporativas</h4>
+                        <p>Área: Comercial y Relaciones B2B</p>
+                    </div>
+                </div>
+
+                <div class="window-card">
+                    <div class="window-card-img-wrapper">
+                        <img src="vacante_marketing.jpg" alt="Analista de Marketing" class="window-card-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=padding:40px;text-align:center;color:#A0AEC0;font-weight:600;>[Imagen: Analista de Marketing]<br><span style=font-size:0.75rem;font-weight:normal;>(Carga vacante_marketing.jpg)</span></div>'">
+                    </div>
+                    <div class="window-card-info">
+                        <h4>Analista de Marketing y Comunicaciones</h4>
+                        <p>Área: Medios y Estrategia Digital</p>
+                    </div>
+                </div>
+
+                <div class="window-card">
+                    <div class="window-card-img-wrapper">
+                        <img src="vacante_coordinador.jpg" alt="Coordinador de Obras" class="window-card-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=padding:40px;text-align:center;color:#A0AEC0;font-weight:600;>[Imagen: Coordinador de Obras]<br><span style=font-size:0.75rem;font-weight:normal;>(Carga vacante_coordinador.jpg)</span></div>'">
+                    </div>
+                    <div class="window-card-info">
+                        <h4>Coordinador(a) de Obras</h4>
+                        <p>Área: Supervisión Técnica e Instalaciones</p>
+                    </div>
+                </div>
             </div>
         </section>
 
