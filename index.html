@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSOR'T Air Technologies | Plataforma Corporativa</title>
     <style>
-        /* Paleta de Colores de Alta Fidelidad Corporativa (60-30-10) */
+        /* Paleta de Colores Corporativa Renovada de Alta Fidelidad */
         :root {
-            --bg-principal: #F4F7F9;      /* 60% Fondo claro, limpio y minimalista */
+            --bg-principal: #061126;      /* Fondo General: Azul Marino Premium y Profundo */
             --blanco: #FFFFFF;
-            --azul-corporativo: #0B1B3D;  /* 30% Azul oscuro de alta confianza */
-            --azul-tarjetas: #0F2554;
-            --azul-acento: #00A8E8;      /* 10% Cian brillante para elementos clave */
-            --azul-acento-hover: #0080B0;
-            --texto-oscuro: #0E1E38;
-            --texto-mutado: #64748B;
-            --borde-suave: #E2E8F0;
-            --sombra-premium: 0 10px 30px rgba(11, 27, 61, 0.05);
-            --sombra-profunda: 0 20px 40px rgba(11, 27, 61, 0.12);
+            --azul-corporativo: #0B1B3D;  /* Azul oscuro base */
+            --azul-tarjetas: rgba(15, 37, 84, 0.45); /* Tarjetas con transparencia para el desenfoque */
+            --azul-acento: #00A8E8;      /* Cian brillante de neón */
+            --azul-acento-hover: #00E5FF;
+            --texto-oscuro: #FFFFFF;
+            --texto-mutado: #94A3B8;
+            --borde-suave: rgba(0, 168, 232, 0.2);
+            --sombra-premium: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --sombra-profunda: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            /* Sistema de fuentes de alta elegancia y legibilidad editorial */
+            font-family: 'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -34,24 +35,26 @@
             line-height: 1.6;
         }
 
-        /* --- MENÚ DE NAVEGACIÓN --- */
+        /* --- MENÚ DE NAVEGACIÓN CON DESENFOQUE (GLASSMORPHISM) --- */
         header {
-            background-color: var(--azul-corporativo);
+            background-color: rgba(11, 27, 61, 0.8);
+            backdrop-filter: blur(12px); /* Zona de desenfoque premium */
+            -webkit-backdrop-filter: blur(12px);
             padding: 18px 6%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid var(--azul-acento);
+            border-bottom: 2px solid var(--azul-acento);
         }
 
         .logo-text {
             font-weight: 800;
             font-size: 1.5rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--blanco);
             text-transform: uppercase;
         }
@@ -71,52 +74,70 @@
             gap: 20px;
         }
 
-        nav a {
+        /* --- EFECTO RECORRIDO DE CUADRO COMPLETO EN NEÓN ENTRECORTADO --- */
+        nav a, .btn-nav-outline {
             color: #D1D5DB;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            padding: 10px 20px;
             position: relative;
-            padding: 4px 0;
-        }
-
-        nav a:hover {
-            color: var(--azul-acento);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: 0; left: 0;
-            background-color: var(--azul-acento);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            outline: none;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.02);
+            overflow: visible;
         }
 
         .btn-nav-outline {
-            border: 2px solid var(--azul-acento);
             color: var(--azul-acento);
-            padding: 8px 18px;
-            border-radius: 50px;
-            text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
             text-transform: uppercase;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
         }
 
-        .btn-nav-outline:hover {
-            background-color: var(--azul-acento);
-            color: var(--azul-corporativo);
-            transform: translateY(-2px);
+        nav a:hover, .btn-nav-outline:hover {
+            color: var(--blanco);
+            background-color: rgba(0, 168, 232, 0.08);
+            text-shadow: 0 0 10px rgba(0, 168, 232, 0.8);
         }
 
-        /* --- HERO PRINCIPAL --- */
+        .neon-border-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .neon-border-rect {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: var(--azul-acento);
+            stroke-width: 2px;
+            rx: 6px;
+            ry: 6px;
+            stroke-dasharray: 12 12; 
+            animation: correrLineaCortada 2s linear infinite;
+            filter: drop-shadow(0 0 4px var(--azul-acento));
+        }
+
+        nav a:hover .neon-border-rect, 
+        .btn-nav-outline:hover .neon-border-rect {
+            stroke: var(--azul-acento-hover);
+            animation: correrLineaCortada 0.8s linear infinite;
+            filter: drop-shadow(0 0 8px var(--azul-acento-hover));
+        }
+
+        @keyframes correrLineaCortada {
+            from { stroke-dashoffset: 48; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* --- HERO PRINCIPAL CON CAPA SUTIL --- */
         .hero {
             position: relative;
             height: 70vh;
@@ -132,7 +153,7 @@
         .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(11, 27, 61, 0.75), rgba(11, 27, 61, 0.9)), url('image_ba2d7c.jpg');
+            background-image: linear-gradient(rgba(6, 17, 38, 0.6), rgba(6, 17, 38, 0.85)), url('https://drive.google.com/uc?export=view&id=19dILldy74B1f8RHOJ_l4-GV0POOtQuk0');
             background-size: cover;
             background-position: center;
             z-index: 1;
@@ -149,39 +170,39 @@
         .hero h1 {
             font-size: 3.6rem;
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 20px;
             line-height: 1.1;
             text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
         .hero .slogan {
             font-size: 1.6rem;
             color: var(--azul-acento);
-            font-weight: 400;
-            letter-spacing: 2px;
+            font-weight: 500;
+            letter-spacing: 3px;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
 
         .hero .btn-hero {
-            background: linear-gradient(135deg, var(--azul-acento) 0%, var(--azul-acento-hover) 100%);
-            color: var(--azul-corporativo);
+            background: linear-gradient(135deg, var(--azul-acento) 0%, #0080B0 100%);
+            color: #061126;
             padding: 14px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(0, 168, 232, 0.4);
+            box-shadow: 0 5px 25px rgba(0, 168, 232, 0.4);
             transition: all 0.3s ease;
             display: inline-block;
         }
 
         .hero .btn-hero:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 168, 232, 0.6);
+            box-shadow: 0 8px 30px rgba(0, 168, 232, 0.7);
         }
 
         /* --- CONTENEDOR ESTRUCTURAL --- */
@@ -195,11 +216,11 @@
             text-align: center;
             font-size: 2.4rem;
             font-weight: 800;
-            color: var(--azul-corporativo);
+            color: var(--blanco);
             margin-bottom: 60px;
             text-transform: uppercase;
             position: relative;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .section-title::after {
@@ -212,13 +233,15 @@
             border-radius: 2px;
         }
 
-        /* --- SECCIÓN IDENTIDAD (COC) --- */
+        /* --- SECCIÓN IDENTIDAD (CULTURA CON DESENFOQUE) --- */
         .coc-bg {
-            background: linear-gradient(145deg, var(--azul-corporativo) 0%, #061026 100%);
+            background: linear-gradient(145deg, rgba(11, 27, 61, 0.7) 0%, rgba(6, 16, 38, 0.9) 100%);
+            backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 60px 40px;
             box-shadow: var(--sombra-profunda);
             margin-bottom: 80px;
+            border: 1px solid rgba(0, 168, 232, 0.15);
         }
 
         .coc-grid {
@@ -228,15 +251,15 @@
         }
 
         .coc-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 16px;
             padding: 30px;
             transition: all 0.3s ease;
         }
 
         .coc-card:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--azul-acento);
             transform: translateY(-5px);
         }
@@ -261,29 +284,40 @@
             color: var(--azul-acento);
         }
 
-        /* --- ORGANIGRAMA MEJORADO --- */
+        /* --- ORGANIGRAMA INTERACTIVO CON POPS DE CONCEPTO FLUIDO --- */
         .org-container {
-            background-color: var(--blanco);
+            background-color: rgba(11, 27, 61, 0.4);
+            backdrop-filter: blur(15px); /* Gran zona de desenfoque elegante */
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 50px 30px;
-            box-shadow: var(--sombra-premium);
+            box-shadow: var(--sombra-profunda);
             border: 1px solid var(--borde-suave);
+        }
+
+        /* Estilo base común de los bloques para soportar los conceptos ocultos */
+        .ceo-block, .node-element {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow: hidden; /* Oculta el concepto inicialmente */
+        }
+
+        .ceo-block {
+            background: linear-gradient(135deg, #0b1b3d 0%, #162d5a 100%);
+            color: var(--blanco);
+            padding: 20px 45px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-bottom: 4px solid var(--azul-acento);
+            max-width: 320px;
         }
 
         .org-boss-row {
             display: flex;
             justify-content: center;
             margin-bottom: 40px;
-        }
-
-        .ceo-block {
-            background: linear-gradient(135deg, var(--azul-corporativo) 0%, var(--azul-tarjetas) 100%);
-            color: var(--blanco);
-            padding: 20px 45px;
-            border-radius: 14px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(11, 27, 61, 0.15);
-            border-bottom: 4px solid var(--azul-acento);
         }
 
         .ceo-block h4 {
@@ -299,37 +333,80 @@
         }
 
         .staff-box {
-            background-color: #F8FAFC;
-            border: 2px dashed var(--borde-suave);
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 2px dashed rgba(0, 168, 232, 0.3);
             border-radius: 12px;
             padding: 20px;
             max-width: 450px;
             margin: 0 auto 40px auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .node-element {
-            background: var(--blanco);
+            background: rgba(15, 37, 84, 0.7);
             border: 1px solid var(--borde-suave);
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 600;
+            color: var(--blanco);
+            display: block; /* Cambiado para correcta inyección del bloque de texto */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .node-element-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            width: 100%;
         }
 
         .badge-count {
-            background-color: var(--azul-corporativo);
-            color: var(--blanco);
+            background-color: var(--azul-acento);
+            color: #061126;
             font-size: 0.75rem;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: 20px;
+        }
+
+        /* --- DINÁMICA DE CONCEPTOS DESPLEGABLES FLUIDOS (CSS PURO) --- */
+        /* Contenedor del concepto explicativo */
+        .puesto-concepto {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            font-size: 0.82rem;
+            color: #94A3B8;
+            font-weight: 400;
+            text-align: left;
+            margin-top: 0;
+            line-height: 1.4;
+            border-top: 1px dashed rgba(0, 168, 232, 0);
+            padding-top: 0;
+        }
+
+        /* Comportamiento al Tocar / Pasar cursor por las tarjetas */
+        .ceo-block:hover, .node-element:hover {
+            overflow: visible;
+            max-height: 500px; /* Permite la apertura */
+            border-color: var(--azul-acento-hover);
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 168, 232, 0.2);
+            background: rgba(15, 37, 84, 0.95);
+        }
+
+        .ceo-block:hover .puesto-concepto, .node-element:hover .puesto-concepto {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top-color: rgba(0, 168, 232, 0.25);
+            color: #E2E8F0;
         }
 
         .org-grid-deps {
@@ -339,20 +416,15 @@
         }
 
         .dep-card {
-            background-color: #F8FAFC;
+            background-color: rgba(255, 255, 255, 0.02);
             border-radius: 14px;
             padding: 20px;
-            border-top: 4px solid var(--azul-corporativo);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--azul-acento);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .dep-card.c1 { border-top-color: #03254C; }
-        .dep-card.c2 { border-top-color: #113F67; }
-        .dep-card.c3 { border-top-color: #226597; }
-        .dep-card.c4 { border-top-color: #3B82B6; }
-
         .dep-title {
-            background-color: var(--azul-corporativo);
+            background-color: #0B1B3D;
             color: var(--blanco);
             font-size: 0.85rem;
             font-weight: 700;
@@ -362,16 +434,13 @@
             text-align: center;
             margin-bottom: 15px;
             letter-spacing: 0.5px;
-        }
-
-        .dep-card .node-element {
-            margin-bottom: 10px;
+            border: 1px solid var(--borde-suave);
         }
 
         .sub-group-nodes {
             margin-top: 5px;
-            padding-left: 15px;
-            border-left: 2px dashed #CBD5E1;
+            padding-left: 12px;
+            border-left: 2px dashed rgba(148, 163, 184, 0.3);
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -383,21 +452,24 @@
         }
 
         .total-banner span {
-            background-color: var(--azul-corporativo);
+            background-color: #0B1B3D;
             color: var(--blanco);
             padding: 12px 35px;
             border-radius: 50px;
             font-weight: 700;
             letter-spacing: 1px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(11, 27, 61, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--azul-acento);
         }
 
-        /* --- CURRICULUM VITAE MODERNO --- */
+        /* --- CURRICULUM VITAE CON DESENFOQUE FOCALIZADO --- */
         .cv-grid {
-            background-color: var(--blanco);
+            background-color: rgba(11, 27, 61, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: var(--sombra-premium);
+            box-shadow: var(--sombra-profunda);
             border: 1px solid var(--borde-suave);
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -406,7 +478,7 @@
         }
 
         .cv-sidebar {
-            background-color: #F8FAFC;
+            background-color: rgba(6, 17, 38, 0.4);
             padding: 40px 30px;
             border-right: 1px solid var(--borde-suave);
             text-align: center;
@@ -418,8 +490,8 @@
             border-radius: 12px;
             overflow: hidden;
             margin: 0 auto 20px auto;
-            border: 3px solid var(--azul-corporativo);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--azul-acento);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
         .cv-avatar-frame img {
@@ -430,12 +502,12 @@
 
         .cv-sidebar h3 {
             font-size: 1.3rem;
-            color: var(--azul-corporativo);
+            color: var(--blanco);
             margin-bottom: 5px;
         }
 
         .cv-sidebar .cv-tag {
-            background-color: rgba(0, 168, 232, 0.12);
+            background-color: rgba(0, 168, 232, 0.15);
             color: var(--azul-acento-hover);
             font-size: 0.75rem;
             font-weight: 700;
@@ -452,20 +524,22 @@
             flex-direction: column;
             gap: 12px;
             font-size: 0.85rem;
-            border-top: 1px solid var(--borde-suave);
+            border-top: 1px solid rgba(0, 168, 232, 0.15);
             padding-top: 20px;
         }
+
+        .cv-meta-list strong { color: var(--azul-acento); }
 
         .cv-body {
             padding: 50px;
         }
 
         .cv-segment-title {
-            color: var(--azul-corporativo);
+            color: var(--azul-acento);
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--borde-suave);
+            border-bottom: 2px solid rgba(0, 168, 232, 0.2);
             padding-bottom: 6px;
             margin-bottom: 15px;
             margin-top: 30px;
@@ -475,26 +549,21 @@
 
         .cv-p {
             font-size: 0.95rem;
-            color: var(--texto-oscuro);
+            color: #E2E8F0;
             text-align: justify;
             margin-bottom: 15px;
         }
 
-        .cv-p strong { color: var(--azul-corporativo); }
+        .cv-p strong { color: var(--azul-acento); }
+        .cv-bullet-item { font-size: 0.95rem; margin-bottom: 10px; padding-left: 10px; color: #E2E8F0; }
+        .cv-bullet-item strong { color: var(--azul-acento); }
 
-        .cv-bullet-item {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            padding-left: 10px;
-            position: relative;
-        }
-
-        /* --- VISOR PDF PREMIUM --- */
+        /* --- VISOR PDF --- */
         .pdf-section {
-            background-color: var(--blanco);
+            background-color: rgba(11, 27, 61, 0.3);
             border-radius: 20px;
             padding: 45px;
-            box-shadow: var(--sombra-premium);
+            box-shadow: var(--sombra-profunda);
             border: 1px solid var(--borde-suave);
             margin-top: 80px;
         }
@@ -513,26 +582,24 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--borde-suave);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         /* --- SECCIÓN GOOGLE FORMS INTEGRADO --- */
         .form-section {
-            background-color: var(--blanco);
+            background-color: rgba(11, 27, 61, 0.3);
             border-radius: 20px;
             padding: 50px 30px;
-            box-shadow: var(--sombra-premium);
+            box-shadow: var(--sombra-profunda);
             border: 1px solid var(--borde-suave);
             margin-top: 80px;
         }
 
         .forms-container {
             width: 100%;
-            height: 800px; /* Altura ideal para scroll interno del formulario */
+            height: 800px; 
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--borde-suave);
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
             margin-top: 25px;
         }
 
@@ -542,7 +609,7 @@
         }
 
         .btn-submit-external {
-            background: linear-gradient(135deg, var(--azul-corporativo) 0%, var(--azul-tarjetas) 100%);
+            background: linear-gradient(135deg, #0B1B3D 0%, #1e3a75 100%);
             color: var(--blanco);
             padding: 14px 35px;
             border-radius: 50px;
@@ -551,19 +618,20 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(11, 27, 61, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            border: 1px solid var(--azul-acento);
         }
 
         .btn-submit-external:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(11, 27, 61, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 168, 232, 0.3);
         }
 
         /* --- PIE DE PÁGINA --- */
         footer {
-            background-color: var(--azul-corporativo);
+            background-color: #0B1B3D;
             color: #94A3B8;
             text-align: center;
             padding: 40px 20px;
@@ -575,19 +643,23 @@
         footer strong { color: var(--blanco); }
 
         /* --- RESPONSIVIDAD --- */
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
+            header { flex-direction: column; gap: 20px; text-align: center; padding: 20px; }
+            .nav-container { flex-direction: column; gap: 20px; width: 100%; }
+            nav { justify-content: center; flex-wrap: wrap; gap: 12px; }
             .cv-grid { grid-template-columns: 1fr; }
             .cv-sidebar { border-right: none; border-bottom: 1px solid var(--borde-suave); }
             .hero h1 { font-size: 2.5rem; }
         }
 
         @media (max-width: 600px) {
-            header { flex-direction: column; gap: 15px; text-align: center; }
-            .nav-container { flex-direction: column; gap: 15px; }
-            nav { flex-direction: column; gap: 10px; }
+            nav { flex-direction: column; width: 100%; gap: 10px; }
+            nav a, .btn-nav-outline { display: block; width: 100%; text-align: center; }
+            .neon-border-svg { display: none; }
+            nav a, .btn-nav-outline { border: 1px solid var(--azul-acento); }
             .coc-bg { padding: 40px 20px; }
             .form-section { padding: 40px 15px; }
-            .forms-container { height: 950px; } /* Más alto en móviles por el apilamiento de campos */
+            .forms-container { height: 950px; } 
         }
     </style>
 </head>
@@ -599,13 +671,31 @@
         </div>
         <div class="nav-container">
             <nav>
-                <a href="#inicio">Inicio</a>
-                <a href="#coc">Cultura</a>
-                <a href="#organigrama">Estructura</a>
-                <a href="#cv">Dirección</a>
-                <a href="#documentacion-pdf">Vacantes</a>
+                <a href="#inicio">
+                    Inicio
+                    <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+                </a>
+                <a href="#coc">
+                    Cultura
+                    <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+                </a>
+                <a href="#organigrama">
+                    Estructura
+                    <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+                </a>
+                <a href="#cv">
+                    Dirección
+                    <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+                </a>
+                <a href="#documentacion-pdf">
+                    Vacantes
+                    <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+                </a>
             </nav>
-            <a href="#registro-cv" class="btn-nav-outline">Postularse</a>
+            <a href="#registro-cv" class="btn-nav-outline">
+                Postularse
+                <svg class="neon-border-svg"><rect class="neon-border-rect"/></svg>
+            </a>
         </div>
     </header>
 
@@ -653,47 +743,96 @@
                     <div class="ceo-block">
                         <h4>CEO / Director General</h4>
                         <span>Presidencia Ejecutiva</span>
+                        <div class="puesto-concepto">Máxima autoridad ejecutiva. Responsable de la planeación estratégica global, toma de decisiones de alta fidelidad, representación legal y liderazgo de la visión de sostenibilidad al 2030.</div>
                     </div>
                 </div>
 
                 <div class="staff-box">
-                    <div class="node-element"><span class="badge-count">1x</span> Gerente Administrativo y Financiero</div>
-                    <div class="node-element"><span class="badge-count">1x</span> Encargado de Recursos Humanos</div>
-                    <div class="node-element"><span class="badge-count">1x</span> Asistente Administrativo</div>
+                    <div class="node-element">
+                        <div class="node-element-header"><span class="badge-count">1x</span> Gerente Administrativo y Financiero</div>
+                        <div class="puesto-concepto">Supervisa la salud contable, presupuestos de proyectos térmicos, estados financieros, cumplimiento fiscal y auditorías de costos de la sociedad.</div>
+                    </div>
+                    <div class="node-element">
+                        <div class="node-element-header"><span class="badge-count">1x</span> Encargado de Recursos Humanos</div>
+                        <div class="puesto-concepto">Gestión integral de las 25 plazas de la fuerza laboral, reclutamiento especializado HVAC, nóminas, capacitaciones técnicas y bienestar corporativo.</div>
+                    </div>
+                    <div class="node-element">
+                        <div class="node-element-header"><span class="badge-count">1x</span> Asistente Administrativo</div>
+                        <div class="puesto-concepto">Control logístico documental, recepción, canalización de facturas, atención telefónica corporativa y soporte directo a la dirección.</div>
+                    </div>
                 </div>
 
                 <div class="org-grid-deps">
                     <div class="dep-card c1">
                         <div class="dep-title">2. Operaciones (12)</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Jefe de Operaciones</div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Jefe de Operaciones</div>
+                            <div class="puesto-concepto">Coordina la ejecución de todas las obras de instalación, cronogramas de mantenimiento predictivo y asignación de cuadrillas en campo.</div>
+                        </div>
                         <div class="sub-group-nodes">
-                            <div class="node-element"><span class="badge-count">2x</span> Ingenieros de Proyectos</div>
-                            <div class="node-element"><span class="badge-count">3x</span> Técnicos Líderes</div>
+                            <div class="node-element">
+                                <div class="node-element-header"><span class="badge-count">2x</span> Ingenieros de Proyectos</div>
+                                <div class="puesto-concepto">Cálculo de cargas térmicas, diseño de planos HVAC, selección de maquinaria industrial y supervisión técnica avanzada de obra.</div>
+                            </div>
+                            <div class="node-element">
+                                <div class="node-element-header"><span class="badge-count">3x</span> Técnicos Líderes</div>
+                                <div class="puesto-concepto">Dirección directa en campo de las instalaciones físicas, conexiones de refrigerante, comisionamiento de sistemas y arranque de equipos.</div>
+                            </div>
                             <div class="sub-group-nodes">
-                                <div class="node-element"><span class="badge-count">4x</span> Auxiliares Técnicos</div>
-                                <div class="node-element"><span class="badge-count">2x</span> Técnicos Especialistas</div>
+                                <div class="node-element">
+                                    <div class="node-element-header"><span class="badge-count">4x</span> Auxiliares Técnicos</div>
+                                    <div class="puesto-concepto">Soporte operativo en montaje, tendido de ductos, aislamiento térmico, limpieza de filtros y transporte de herramientas.</div>
+                                </div>
+                                <div class="node-element">
+                                    <div class="node-element-header"><span class="badge-count">2x</span> Técnicos Especialistas</div>
+                                    <div class="puesto-concepto">Diagnóstico de fallas en tarjetas electrónicas, calibración de termostatos inteligentes y manejo de refrigerantes ecológicos.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="dep-card c2">
                         <div class="dep-title">3. Logística (3)</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Jefe de Compras</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Encargado de Almacén</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Gestor Logístico</div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Jefe de Compras</div>
+                            <div class="puesto-concepto">Negociación con proveedores internacionales, adquisición de insumos certificados y control estricto de cotizaciones.</div>
+                        </div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Encargado de Almacén</div>
+                            <div class="puesto-concepto">Control de inventarios de unidades Inverter, herramientas especializadas, refacciones, válvulas y resguardo seguro.</div>
+                        </div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Gestor Logístico</div>
+                            <div class="puesto-concepto">Planificación de rutas de despacho, distribución eficiente de materiales a las obras y control de la flota de transporte técnica.</div>
+                        </div>
                     </div>
 
                     <div class="dep-card c3">
                         <div class="dep-title">4. Comercial (4)</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Gerente Comercial</div>
-                        <div class="node-element"><span class="badge-count">2x</span> Ejecutivos de Ventas</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Especialista Mkt</div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Gerente Comercial</div>
+                            <div class="puesto-concepto">Diseño de la estrategia de expansión de mercado, fijación de metas de ventas y cierre de licitaciones corporativas clave.</div>
+                        </div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">2x</span> Ejecutivos de Ventas</div>
+                            <div class="puesto-concepto">Prospección B2B, visitas técnicas a clientes en la zona oriental de El Salvador y elaboración de ofertas económicas para proyectos HVAC.</div>
+                        </div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Especialista Mkt</div>
+                            <div class="puesto-concepto">Gestión de la marca digital, Meta Business Suite, campañas publicitarias de eficiencia energética y diseño de catálogos interactivos.</div>
+                        </div>
                     </div>
 
                     <div class="dep-card c4">
                         <div class="dep-title">5. Soporte (2)</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Atención al Cliente</div>
-                        <div class="node-element"><span class="badge-count">1x</span> Gestor de Cobranza</div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Atención al Cliente</div>
+                            <div class="puesto-concepto">Recepción de reportes de fallas, programación de garantías y encuestas periódicas de satisfacción post-servicio.</div>
+                        </div>
+                        <div class="node-element">
+                            <div class="node-element-header"><span class="badge-count">1x</span> Gestor de Cobranza</div>
+                            <div class="puesto-concepto">Monitoreo de cuentas por cobrar de clientes comerciales, emisión de recordatorios de pago y conciliación de saldos devengados.</div>
+                        </div>
                     </div>
                 </div>
 
