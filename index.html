@@ -3,848 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSOR'T Air Technologies | Premium Platform</title>
+    <title>MSOR'T Air Technologies | Plataforma Corporativa</title>
     <style>
-        /* Regla de Diseño Avanzada 60-30-10 con Tonos Ultra Oscuros */
+        /* Paleta de Colores de Alta Fidelidad Corporativa (60-30-10) */
         :root {
-            --dominante-fondo: #F0F4F5;   /* 60% Fondo purificado, simula ambiente climatizado */
-            --blanco-puro: #FFFFFF;
-            --secundario-oscuro: #06162C; /* 30% Azul Marino Ultra Oscuro (Alta Fidelidad Corporativa) */
-            --secundario-tarjetas: #0B2347;/* Variación interna para bloques oscuros */
-            --acento-tecnologico: #00A8E8;/* 10% Cian Inverter brillante para llamadas a la acción */
-            --acento-hover: #0089BD;
-            --texto-general: #091E3A;
-            --cristal-fondo: rgba(255, 255, 255, 0.45);
-            --cristal-borde: rgba(255, 255, 255, 0.6);
+            --bg-principal: #F4F7F9;      /* 60% Fondo claro, limpio y minimalista */
+            --blanco: #FFFFFF;
+            --azul-corporativo: #0B1B3D;  /* 30% Azul oscuro de alta confianza */
+            --azul-tarjetas: #0F2554;
+            --azul-acento: #00A8E8;      /* 10% Cian brillante para elementos clave */
+            --azul-acento-hover: #0080B0;
+            --texto-oscuro: #0E1E38;
+            --texto-mutado: #64748B;
+            --borde-suave: #E2E8F0;
+            --sombra-premium: 0 10px 30px rgba(11, 27, 61, 0.05);
+            --sombra-profunda: 0 20px 40px rgba(11, 27, 61, 0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--dominante-fondo);
-            color: var(--texto-general);
+            background-color: var(--bg-principal);
+            color: var(--texto-oscuro);
             line-height: 1.6;
         }
 
+        /* --- MENÚ DE NAVEGACIÓN --- */
         header {
-            background-color: var(--secundario-oscuro);
-            color: var(--blanco-puro);
-            padding: 16px 5%;
+            background-color: var(--azul-corporativo);
+            padding: 18px 6%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 25px rgba(6, 22, 44, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--acento-tecnologico);
+            border-bottom: 3px solid var(--azul-acento);
         }
 
-        .company-name {
+        .logo-text {
             font-weight: 800;
-            font-size: 1.4rem;
-            letter-spacing: 1.2px;
-            color: var(--blanco-puro);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--blanco);
             text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--azul-acento);
         }
 
         .nav-container {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav {
             display: flex;
-            align-items: center;
             gap: 20px;
         }
 
         nav a {
-            color: #E2E8F0;
+            color: #D1D5DB;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.3s, transform 0.2s;
-            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
         }
 
         nav a:hover {
-            color: var(--acento-tecnologico);
+            color: var(--azul-acento);
         }
 
-        /* Rediseño Avanzado de los Botones del Menú Superior */
-        .btn-pdf-nav {
-            background: transparent;
-            color: var(--acento-tecnologico);
-            border: 2px solid var(--acento-tecnologico);
-            padding: 9px 20px;
-            border-radius: 25px;
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: 0; left: 0;
+            background-color: var(--azul-acento);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav-outline {
+            border: 2px solid var(--azul-acento);
+            color: var(--azul-acento);
+            padding: 8px 18px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
         }
 
-        .btn-pdf-nav:hover {
-            background: rgba(0, 168, 232, 0.1);
-            color: var(--blanco-puro);
-            border-color: var(--blanco-puro);
-            transform: translateY(-1px);
-        }
-
-        .btn-registro-nav {
-            background: linear-gradient(135deg, var(--acento-tecnologico) 0%, var(--acento-hover) 100%);
-            color: var(--blanco-puro);
-            border: none;
-            padding: 11px 24px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 168, 232, 0.4);
-        }
-
-        .btn-registro-nav:hover {
+        .btn-nav-outline:hover {
+            background-color: var(--azul-acento);
+            color: var(--azul-corporativo);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 168, 232, 0.6);
-            background: linear-gradient(135deg, var(--acento-hover) 0%, #006C96) 100%;
         }
 
-        /* Hero Profesional con Slideshow de Climatización Industrial */
+        /* --- HERO PRINCIPAL --- */
         .hero {
             position: relative;
-            height: 75vh;
-            min-height: 480px;
+            height: 70vh;
+            min-height: 500px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--blanco-puro);
+            color: var(--blanco);
             overflow: hidden;
-            padding: 0 20px;
         }
 
-        .hero-slideshow {
+        .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(11, 27, 61, 0.75), rgba(11, 27, 61, 0.9)), url('image_ba2d7c.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            animation: slideAnimation 16s infinite;
-        }
-
-        /* Slider de Fondos utilizando tu recurso local image_ba2d7c.jpg sin puntos iniciales */
-        .slide:nth-child(1) {
-            background-image: linear-gradient(rgba(6, 22, 44, 0.65), rgba(6, 22, 44, 0.85)), url('image_ba2d7c.jpg');
-            animation-delay: 0s;
-        }
-        .slide:nth-child(2) {
-            background-image: linear-gradient(rgba(6, 22, 44, 0.7), rgba(6, 22, 44, 0.9)), 
-                              radial-gradient(circle at 50% 50%, rgba(0, 168, 232, 0.25) 0%, transparent 80%);
-            animation-delay: 8s;
-        }
-
-        @keyframes slideAnimation {
-            0% { opacity: 0; transform: scale(1); }
-            8% { opacity: 1; }
-            50% { opacity: 1; }
-            58% { opacity: 0; transform: scale(1.03); }
-            100% { opacity: 0; }
+            z-index: 1;
+            transform: scale(1.02);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 950px;
+            max-width: 900px;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.4rem;
+            font-size: 3.6rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            line-height: 1.1;
             text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .hero .slogan {
             font-size: 1.6rem;
-            color: var(--acento-tecnologico);
-            font-style: italic;
+            color: var(--azul-acento);
             font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .hero .btn-hero {
+            background: linear-gradient(135deg, var(--azul-acento) 0%, var(--azul-acento-hover) 100%);
+            color: var(--azul-corporativo);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 20px rgba(0, 168, 232, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .hero-gradient-edge {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 120px;
-            background: linear-gradient(to top, var(--dominante-fondo), transparent);
-            z-index: 3;
+        .hero .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 232, 0.6);
         }
 
+        /* --- CONTENEDOR ESTRUCTURAL --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 80px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            color: var(--secundario-oscuro);
-            margin-bottom: 45px;
-            position: relative;
+            color: var(--azul-corporativo);
+            margin-bottom: 60px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            position: relative;
+            letter-spacing: 0.5px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 50%;
+            width: 70px; height: 4px;
+            background-color: var(--azul-acento);
+            bottom: -15px; left: 50%;
             transform: translateX(-50%);
-            width: 60px; height: 4.5px;
-            background-color: var(--acento-tecnologico);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
-        /* Sección de la COC Cristalizada sobre Fondo Decorativo Temático de Flujo de Aire */
-        .coc-section-bg {
-            background: var(--secundario-oscuro);
-            background-image: 
-                radial-gradient(circle at 90% 10%, rgba(0, 168, 232, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-                linear-gradient(135deg, var(--secundario-oscuro) 0%, #030B16 100%),
-                repeating-linear-gradient(0deg, rgba(0, 168, 232, 0.01) 0px, rgba(0, 168, 232, 0.01) 1px, transparent 1px, transparent 4px);
+        /* --- SECCIÓN IDENTIDAD (COC) --- */
+        .coc-bg {
+            background: linear-gradient(145deg, var(--azul-corporativo) 0%, #061026 100%);
             border-radius: 24px;
             padding: 60px 40px;
-            box-shadow: 0 15px 40px rgba(6, 22, 44, 0.15);
-            margin-bottom: 60px;
+            box-shadow: var(--sombra-profunda);
+            margin-bottom: 80px;
         }
 
         .coc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
-        /* Cristalización de Alta Fidelidad (Glassmorphism Profesional) */
-        .info-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .coc-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 35px 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s;
+            padding: 30px;
+            transition: all 0.3s ease;
         }
 
-        .info-card:hover {
+        .coc-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--azul-acento);
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(0, 168, 232, 0.5);
-            box-shadow: 0 15px 35px rgba(0, 168, 232, 0.15);
         }
 
-        .info-card h3 {
-            color: #E2E8F0;
-            margin-bottom: 16px;
-            font-size: 1.25rem;
+        .coc-card h3 {
+            color: var(--azul-acento);
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid rgba(0, 168, 232, 0.4);
-            padding-bottom: 10px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            border-left: 3px solid var(--azul-acento);
+            padding-left: 10px;
         }
 
-        .info-card p {
+        .coc-card p {
+            color: #E2E8F0;
             font-size: 0.95rem;
-            color: #CBD5E1;
             text-align: justify;
-            line-height: 1.7;
         }
 
-        .info-card p strong {
-            color: var(--acento-tecnologico);
+        .coc-card p strong {
+            color: var(--azul-acento);
         }
 
-        /* Organigrama Corporativo de Alta Gama */
-        .org-canvas {
-            background-color: var(--blanco-puro);
+        /* --- ORGANIGRAMA MEJORADO --- */
+        .org-container {
+            background-color: var(--blanco);
             border-radius: 20px;
             padding: 50px 30px;
-            box-shadow: 0 10px 35px rgba(6, 22, 44, 0.04);
+            box-shadow: var(--sombra-premium);
+            border: 1px solid var(--borde-suave);
         }
 
-        .org-row {
+        .org-boss-row {
             display: flex;
             justify-content: center;
-            width: 100%;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
-        .org-node {
-            background: var(--blanco-puro);
-            border: 2px solid #E2E8F0;
-            border-radius: 30px;
-            padding: 12px 28px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
+        .ceo-block {
+            background: linear-gradient(135deg, var(--azul-corporativo) 0%, var(--azul-tarjetas) 100%);
+            color: var(--blanco);
+            padding: 20px 45px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(11, 27, 61, 0.15);
+            border-bottom: 4px solid var(--azul-acento);
+        }
+
+        .ceo-block h4 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ceo-block span {
+            font-size: 0.85rem;
+            color: var(--azul-acento);
+            font-weight: 700;
+        }
+
+        .staff-box {
+            background-color: #F8FAFC;
+            border: 2px dashed var(--borde-suave);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 450px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .node-element {
+            background: var(--blanco);
+            border: 1px solid var(--borde-suave);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--secundario-oscuro);
-        }
-
-        .node-badge {
-            background-color: #F0F4F8;
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .badge-count {
+            background-color: var(--azul-corporativo);
+            color: var(--blanco);
             font-size: 0.75rem;
             font-weight: 700;
-            color: var(--secundario-oscuro);
+            padding: 2px 8px;
+            border-radius: 20px;
         }
 
-        .level-staff-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            border: 2px dashed #CBD5E1;
-            padding: 25px;
-            border-radius: 16px;
-            background-color: #F8FAFC;
-        }
-
-        .ceo-node {
-            border: 2px solid var(--secundario-oscuro);
-            background-color: #F0F4FA;
-            padding: 16px 40px;
-        }
-        
-        .ceo-node .node-badge { 
-            background-color: var(--secundario-oscuro); 
-            color: var(--blanco-puro); 
-        }
-
-        .staff-subgroup {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .division-bar {
-            background-color: var(--secundario-oscuro);
-            color: var(--blanco-puro);
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .org-departments-grid {
+        .org-grid-deps {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
-            align-items: start;
         }
 
-        @media (max-width: 1024px) {
-            .org-departments-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 650px) {
-            .org-departments-grid { grid-template-columns: 1fr; }
-            .level-staff-container { flex-direction: column; }
-        }
-
-        .dept-column {
+        .dep-card {
             background-color: #F8FAFC;
             border-radius: 14px;
-            padding: 18px;
-            border: 1px solid #E2E8F0;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            height: 100%;
+            padding: 20px;
+            border-top: 4px solid var(--azul-corporativo);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .dept-1 .division-bar { background-color: #03254C; }
-        .dept-2 .division-bar { background-color: #113F67; }
-        .dept-3 .division-bar { background-color: #226597; }
-        .dept-4 .division-bar { background-color: #3B82B6; }
+        .dep-card.c1 { border-top-color: #03254C; }
+        .dep-card.c2 { border-top-color: #113F67; }
+        .dep-card.c3 { border-top-color: #226597; }
+        .dep-card.c4 { border-top-color: #3B82B6; }
 
-        .sub-level-box {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-left: 15px;
-            border-left: 2px solid #E2E8F0;
-            margin-top: 4px;
-        }
-
-        /* Estructura del Curriculum Vitae Corporativo */
-        .cv-wrapper {
-            background: var(--blanco-puro);
-            border-radius: 20px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(6, 22, 44, 0.04);
-            display: grid;
-            grid-template-columns: 1fr 2.5fr;
-            gap: 40px;
-        }
-
-        .cv-left { 
-            text-align: center; 
-            border-right: 1px solid #E2E8F0; 
-            padding-right: 30px; 
-        }
-
-        .cv-photo-frame {
-            width: 150px;
-            height: 190px;
-            margin: 0 auto 20px;
-            border: 2px solid var(--secundario-oscuro);
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #F8FAFC;
-        }
-
-        .cv-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cv-section-title {
-            color: var(--secundario-oscuro); 
-            border-bottom: 2px solid #E2E8F0; 
-            padding-bottom: 6px; 
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.15rem;
+        .dep-title {
+            background-color: var(--azul-corporativo);
+            color: var(--blanco);
+            font-size: 0.85rem;
+            font-weight: 700;
             text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 15px;
             letter-spacing: 0.5px;
         }
 
-        .cv-item {
-            margin-bottom: 14px;
-            font-size: 0.95rem;
-            text-align: justify;
+        .dep-card .node-element {
+            margin-bottom: 10px;
         }
 
-        @media (max-width: 768px) {
-            .cv-wrapper { grid-template-columns: 1fr; padding: 25px; }
-            .cv-left { border-right: none; padding-right: 0; }
-        }
-
-        /* Estilos Especiales para el Contenedor Incrustado del Archivo PDF */
-        .pdf-viewer-section {
-            background-color: var(--blanco-puro);
-            border-radius: 20px;
-            padding: 45px;
-            box-shadow: 0 15px 40px rgba(6, 22, 44, 0.05);
-            margin-top: 60px;
-            border-left: 6px solid var(--secundario-oscuro);
-        }
-
-        .pdf-frame-container {
-            position: relative;
-            width: 100%;
-            height: 650px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #E2E8F0;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
-            margin-top: 25px;
-        }
-
-        /* Ventana o Formulario Expandido para Carga de Currículums */
-        .window-section {
-            background-color: var(--blanco-puro);
-            border-radius: 20px;
-            padding: 50px 45px;
-            box-shadow: 0 20px 50px rgba(6, 22, 44, 0.07);
-            border-top: 6px solid var(--acento-tecnologico);
-            margin-top: 60px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
-        }
-
-        .form-group {
+        .sub-group-nodes {
+            margin-top: 5px;
+            padding-left: 15px;
+            border-left: 2px dashed #CBD5E1;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .form-group.full-width { grid-column: span 2; }
-        @media (max-width: 768px) { .form-group.full-width { grid-column: span 1; } }
+        .total-banner {
+            margin-top: 50px;
+            text-align: center;
+        }
 
-        .form-group label {
-            font-size: 0.85rem;
+        .total-banner span {
+            background-color: var(--azul-corporativo);
+            color: var(--blanco);
+            padding: 12px 35px;
+            border-radius: 50px;
             font-weight: 700;
-            color: var(--secundario-oscuro);
+            letter-spacing: 1px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(11, 27, 61, 0.2);
+        }
+
+        /* --- CURRICULUM VITAE MODERNO --- */
+        .cv-grid {
+            background-color: var(--blanco);
+            border-radius: 20px;
+            box-shadow: var(--sombra-premium);
+            border: 1px solid var(--borde-suave);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .cv-sidebar {
+            background-color: #F8FAFC;
+            padding: 40px 30px;
+            border-right: 1px solid var(--borde-suave);
+            text-align: center;
+        }
+
+        .cv-avatar-frame {
+            width: 140px;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0 auto 20px auto;
+            border: 3px solid var(--azul-corporativo);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cv-avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cv-sidebar h3 {
+            font-size: 1.3rem;
+            color: var(--azul-corporativo);
+            margin-bottom: 5px;
+        }
+
+        .cv-sidebar .cv-tag {
+            background-color: rgba(0, 168, 232, 0.12);
+            color: var(--azul-acento-hover);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .cv-meta-list {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--borde-suave);
+            padding-top: 20px;
+        }
+
+        .cv-body {
+            padding: 50px;
+        }
+
+        .cv-segment-title {
+            color: var(--azul-corporativo);
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--borde-suave);
+            padding-bottom: 6px;
+            margin-bottom: 15px;
+            margin-top: 30px;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
-            padding: 14px 18px;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
+        .cv-segment-title:first-child { margin-top: 0; }
+
+        .cv-p {
             font-size: 0.95rem;
-            color: var(--secundario-oscuro);
-            background-color: #F8FAFC;
-            outline: none;
-            transition: all 0.3s ease;
+            color: var(--texto-oscuro);
+            text-align: justify;
+            margin-bottom: 15px;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--acento-tecnologico);
-            box-shadow: 0 0 0 4px rgba(0, 168, 232, 0.15);
-            background-color: var(--blanco-puro);
-        }
+        .cv-p strong { color: var(--azul-corporativo); }
 
-        /* Rediseño del Botón de Envío de Formulario Completo */
-        .btn-submit-cv {
-            background: linear-gradient(135deg, var(--acento-tecnologico) 0%, var(--acento-hover) 100%);
-            color: var(--blanco-puro);
-            border: none;
-            padding: 16px 45px;
+        .cv-bullet-item {
             font-size: 0.95rem;
-            font-weight: 700;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 5px 20px rgba(0, 168, 232, 0.35);
-            display: inline-block;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        /* --- VISOR PDF PREMIUM --- */
+        .pdf-section {
+            background-color: var(--blanco);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: var(--sombra-premium);
+            border: 1px solid var(--borde-suave);
+            margin-top: 80px;
+        }
+
+        .pdf-desc {
+            text-align: center;
+            color: var(--texto-mutado);
+            max-width: 700px;
+            margin: -40px auto 35px auto;
+            font-size: 0.95rem;
+        }
+
+        .pdf-box {
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--borde-suave);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        /* --- SECCIÓN GOOGLE FORMS INTEGRADO --- */
+        .form-section {
+            background-color: var(--blanco);
+            border-radius: 20px;
+            padding: 50px 30px;
+            box-shadow: var(--sombra-premium);
+            border: 1px solid var(--borde-suave);
+            margin-top: 80px;
+        }
+
+        .forms-container {
+            width: 100%;
+            height: 800px; /* Altura ideal para scroll interno del formulario */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--borde-suave);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
             margin-top: 25px;
+        }
+
+        .btn-submit-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-submit-external {
+            background: linear-gradient(135deg, var(--azul-corporativo) 0%, var(--azul-tarjetas) 100%);
+            color: var(--blanco);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(11, 27, 61, 0.2);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .btn-submit-cv:hover {
+        .btn-submit-external:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 168, 232, 0.55);
-            background: linear-gradient(135deg, var(--acento-hover) 0%, #006C96) 100%;
+            box-shadow: 0 6px 20px rgba(11, 27, 61, 0.35);
         }
 
+        /* --- PIE DE PÁGINA --- */
         footer {
-            background-color: var(--secundario-oscuro);
-            color: var(--blanco-puro);
+            background-color: var(--azul-corporativo);
+            color: #94A3B8;
             text-align: center;
             padding: 40px 20px;
-            margin-top: 80px;
-            font-size: 0.9rem;
-            border-top: 4px solid var(--acento-tecnologico);
+            margin-top: 100px;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--azul-acento);
+        }
+
+        footer strong { color: var(--blanco); }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 900px) {
+            .cv-grid { grid-template-columns: 1fr; }
+            .cv-sidebar { border-right: none; border-bottom: 1px solid var(--borde-suave); }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            nav { flex-direction: column; gap: 10px; }
+            .coc-bg { padding: 40px 20px; }
+            .form-section { padding: 40px 15px; }
+            .forms-container { height: 950px; } /* Más alto en móviles por el apilamiento de campos */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-nav-area">
-            <span class="company-name">MSOR'T Air Technologies</span>
+        <div class="logo-area">
+            <h2 class="logo-text">MSOR'T <span>Air Tech</span></h2>
         </div>
         <div class="nav-container">
             <nav>
-                <a href="#inicio">Página Principal</a>
-                <a href="#coc">Identidad de Marca</a>
-                <a href="#organigrama">Estructura Interna</a>
-                <a href="#cv">Hoja de Vida Profesional</a>
-                <a href="#documentacion-pdf" class="btn-pdf-nav">Ver Galería PDF</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#coc">Cultura</a>
+                <a href="#organigrama">Estructura</a>
+                <a href="#cv">Dirección</a>
+                <a href="#documentacion-pdf">Vacantes</a>
             </nav>
-            <a href="#registro-cv" class="btn-registro-nav">Registrar CV en Línea</a>
+            <a href="#registro-cv" class="btn-nav-outline">Postularse</a>
         </div>
     </header>
 
     <section class="hero" id="inicio">
-        <div class="hero-slideshow">
-            <div class="slide"></div>
-            <div class="slide"></div>
-        </div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>MSOR'T AIR TECHNOLOGIES, S.A. DE C.V.</h1>
             <p class="slogan">"Tu zona de confort, bajo nuestro control"</p>
+            <a href="#documentacion-pdf" class="btn-hero">Explorar Vacantes</a>
         </div>
-        <div class="hero-gradient-edge"></div>
     </section>
 
     <div class="container">
 
-        <section id="coc" class="coc-section-bg">
-            <h2 class="section-title" style="color: var(--blanco-puro); margin-bottom: 45px;">Formulación de la COC</h2>
+        <section id="coc" class="coc-bg">
+            <h2 class="section-title" style="color: var(--blanco);">Cultura Organizacional</h2>
             <div class="coc-grid">
-                <div class="info-card">
+                <div class="coc-card">
                     <h3>Misión</h3>
                     <p>Proveer soluciones integrales de climatización y eficiencia energética a través de ingeniería de vanguardia y estándares internacionales de calidad. Nos comprometemos a transformar entornos industriales, comerciales y residenciales en espacios de máximo confort.</p>
                 </div>
-                <div class="info-card">
+                <div class="coc-card">
                     <h3>Visión</h3>
                     <p>Consolidarnos para el año 2030 como la corporación líder en soluciones tecnológicas de aire acondicionado y control ambiental en la región, siendo reconocidos por nuestra innovación constante y la sostenibilidad de nuestros proyectos.</p>
                 </div>
-                <div class="info-card">
-                    <h3>Valores Empresariales</h3>
+                <div class="coc-card">
+                    <h3>Valores ABC</h3>
                     <p><strong>A- Autenticidad en la Calidad:</strong> Uso de materiales certificados y cumplimiento de normativas de refrigeración.<br><br>
                     <strong>B- Bienestar Sostenible:</strong> Priorizar sistemas Inverter de bajo consumo y refrigerantes ecológicos.<br><br>
                     <strong>C- Compromiso con el Control:</strong> Disponibilidad técnica y mantenimiento preventivo riguroso.</p>
                 </div>
-                <div class="info-card">
-                    <h3>Modelo de Empresa</h3>
+                <div class="coc-card">
+                    <h3>Modelo Corporativo</h3>
                     <p><strong>Sociedad Anónima de Capital Variable (S.A. de C.V.)</strong>.<br><br>
-                    Se justifica como una entidad de servicios profesionales de instalación, distribución y mantenimiento técnico especializado en aires acondicionados y termostatos inteligentes, respondiendo a las exigencias de eficiencia térmica del sector mercantil.</p>
+                    Entidad de servicios profesionales de instalación, distribución y mantenimiento técnico especializado en aires acondicionados y termostatos inteligentes, respondiendo a las exigencias de eficiencia térmica del sector mercantil.</p>
                 </div>
             </div>
         </section>
 
-        <section id="organigrama" style="margin-top:60px;">
-            <h2 class="section-title">Organigrama Estructural (25 Colaboradores)</h2>
-            
-            <div class="org-canvas">
-                <div class="org-row">
-                    <div class="level-staff-container">
-                        <div class="org-node ceo-node">
-                            <span class="node-badge">1x</span>
-                            <strong>CEO / Director General</strong>
-                        </div>
-                        <div class="staff-subgroup">
-                            <div class="org-node"><span class="node-badge">1x</span> Gerente Administrativo y Financiero</div>
-                            <div class="org-node"><span class="node-badge">1x</span> Encargado de Recursos Humanos</div>
-                            <div class="org-node"><span class="node-badge">1x</span> Asistente Administrativo</div>
-                        </div>
+        <section id="organigrama">
+            <h2 class="section-title">Estructura Organizacional</h2>
+            <div class="org-container">
+                
+                <div class="org-boss-row">
+                    <div class="ceo-block">
+                        <h4>CEO / Director General</h4>
+                        <span>Presidencia Ejecutiva</span>
                     </div>
                 </div>
 
-                <p style="text-align:center; font-weight:bold; color:#A0AEC0; font-size:0.85rem; margin-bottom:25px;">
-                    │<br>▼ Distribución Operativa de Plantilla
-                </p>
+                <div class="staff-box">
+                    <div class="node-element"><span class="badge-count">1x</span> Gerente Administrativo y Financiero</div>
+                    <div class="node-element"><span class="badge-count">1x</span> Encargado de Recursos Humanos</div>
+                    <div class="node-element"><span class="badge-count">1x</span> Asistente Administrativo</div>
+                </div>
 
-                <div class="org-departments-grid">
-                    
-                    <div class="dept-column dept-1">
-                        <div class="division-bar">2. Operaciones (12)</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Jefe de Operaciones</div>
-                        <div class="sub-level-box">
-                            <div class="org-node"><span class="node-badge">2x</span> Ingenieros de Proyectos</div>
-                            <div class="org-node"><span class="node-badge">3x</span> Técnicos Líderes</div>
-                            <div class="sub-level-box">
-                                <div class="org-node"><span class="node-badge">4x</span> Auxiliares Técnicos</div>
-                                <div class="org-node"><span class="node-badge">2x</span> Técnicos Especialistas</div>
+                <div class="org-grid-deps">
+                    <div class="dep-card c1">
+                        <div class="dep-title">2. Operaciones (12)</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Jefe de Operaciones</div>
+                        <div class="sub-group-nodes">
+                            <div class="node-element"><span class="badge-count">2x</span> Ingenieros de Proyectos</div>
+                            <div class="node-element"><span class="badge-count">3x</span> Técnicos Líderes</div>
+                            <div class="sub-group-nodes">
+                                <div class="node-element"><span class="badge-count">4x</span> Auxiliares Técnicos</div>
+                                <div class="node-element"><span class="badge-count">2x</span> Técnicos Especialistas</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dept-column dept-2">
-                        <div class="division-bar">3. Logística (3)</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Jefe de Compras</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Encargado de Almacén</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Gestor Logístico</div>
+                    <div class="dep-card c2">
+                        <div class="dep-title">3. Logística (3)</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Jefe de Compras</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Encargado de Almacén</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Gestor Logístico</div>
                     </div>
 
-                    <div class="dept-column dept-3">
-                        <div class="division-bar">4. Comercial (4)</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Gerente Comercial</div>
-                        <div class="org-node"><span class="node-badge">2x</span> Ejecutivos de Ventas</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Especialista Mkt</div>
+                    <div class="dep-card c3">
+                        <div class="dep-title">4. Comercial (4)</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Gerente Comercial</div>
+                        <div class="node-element"><span class="badge-count">2x</span> Ejecutivos de Ventas</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Especialista Mkt</div>
                     </div>
 
-                    <div class="dept-column dept-4">
-                        <div class="division-bar">5. Soporte (2)</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Atención al Cliente</div>
-                        <div class="org-node"><span class="node-badge">1x</span> Gestor de Cobranza</div>
+                    <div class="dep-card c4">
+                        <div class="dep-title">5. Soporte (2)</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Atención al Cliente</div>
+                        <div class="node-element"><span class="badge-count">1x</span> Gestor de Cobranza</div>
                     </div>
-
                 </div>
 
-                <div style="margin-top:40px; text-align:center;">
-                    <span style="background-color: var(--secundario-oscuro); color: var(--blanco-puro); padding:14px 40px; border-radius:30px; font-weight:700; font-size:1.05rem; display:inline-block; letter-spacing: 0.5px;">
-                        TOTAL COLABORADORES ACTIVOS: 25 PLAZAS
-                    </span>
+                <div class="total-banner">
+                    <span>FUERZA LABORAL TOTAL: 25 PLAZAS ACTIVAS</span>
                 </div>
             </div>
         </section>
 
-        <section id="cv" style="margin-top:60px;">
-            <h2 class="section-title">Currículum Vitae Oficial del Representante Legal</h2>
-            <div class="cv-wrapper">
-                
-                <div class="cv-left">
-                    <div class="cv-photo-frame">
-                        <img src="Captura de pantalla 2026-05-29 092130.png" class="cv-photo" alt="Representante Legal">
+        <section id="cv">
+            <h2 class="section-title">Representante Legal</h2>
+            <div class="cv-grid">
+                <div class="cv-sidebar">
+                    <div class="cv-avatar-frame">
+                        <img src="Captura de pantalla 2026-05-29 092130.png" alt="Representante Legal">
                     </div>
-                    <h3 style="font-size:1.3rem; color:var(--secundario-oscuro); margin-bottom:4px;">Elmer Josué Sorto Romero</h3>
-                    <p style="color:var(--acento-tecnologico); font-weight:700; font-size:0.85rem; text-transform:uppercase; margin-bottom:20px;">Fundador & CEO</p>
+                    <h3>Elmer Josué Sorto Romero</h3>
+                    <div class="cv-tag">Fundador & CEO</div>
                     
-                    <div style="font-size:0.85rem; text-align:left; background:var(--dominante-fondo); padding:15px; border-radius:8px; border:1px solid #E2E8F0;">
-                        <p style="margin-bottom:8px;"><strong>📍 Ubicación:</strong> Santa Rosa de Lima, La Unión, El Salvador.</p>
-                        <p style="margin-bottom:8px;"><strong>💼 Cargo Técnico:</strong> Representante Legal / Director General.</p>
-                        <p><strong>📅 Año de Reporte:</strong> Gestión Corporativa 2026.</p>
+                    <div class="cv-meta-list">
+                        <p><strong>📍 Ubicación:</strong> Santa Rosa de Lima, El Salvador.</p>
+                        <p><strong>💼 Rol:</strong> Dirección General.</p>
+                        <p><strong>📅 Período:</strong> Gestión 2026.</p>
                     </div>
                 </div>
-                
-                <div class="cv-content">
-                    <h4 class="cv-section-title" style="margin-top:0;">Perfil Ejecutivo y Académico</h4>
-                    <p class="cv-item">
-                        Estudiante de <strong>Tercer Año de Bachillerato</strong>, Especialidad en <strong>Opción Administrativo Contable (Sección “A”)</strong>. Capacitado técnicamente bajo las competencias del Módulo BTV: <em>AC 3.2 Aplicación de Legislación Mercantil, Laboral y Aduanera a las Operaciones Empresariales</em> bajo la tutoría académica del docente Ovidio Omar Martínez. Desarrolla competencias orientadas a la estructuración de modelos societarios, fiscalización y diseño organizacional aplicados al sector tecnológico de refrigeración y climatización.
+                <div class="cv-body">
+                    <h4 class="cv-segment-title">Perfil Ejecutivo</h4>
+                    <p class="cv-p">
+                        Estudiante de <strong>Tercer Año de Bachillerato</strong>, Especialidad en <strong>Opción Administrativo Contable (Sección “A”)</strong>. Desarrollado técnicamente bajo el Módulo BTV: <em>AC 3.2 Aplicación de Legislación Mercantil, Laboral y Aduanera a las Operaciones Empresariales</em> con la mentoría del docente Ovidio Omar Martínez. Competencias sólidas en estructuración societaria, marcos fiscales y diseño de arquitecturas organizacionales enfocadas al sector industrial térmico.
                     </p>
-                    
-                    <h4 class="cv-section-title">Especialización y Áreas de Dominio Técnico</h4>
-                    <div class="cv-item">
-                        • <strong>Legislación Mercantil y Societaria:</strong> Conocimiento aplicativo en el proceso de constitución legal, trámites de inscripción, depósito de estados financieros y renovación de matrículas de comercio bajo la figura de Sociedad Anónima de Capital Variable (S.A. de C.V.).
-                    </div>
-                    <div class="cv-item">
-                        • <strong>Formulación de Cultura Organizacional (COC):</strong> Capacidad técnica para el diseño arquitectónico de marcas e identidad corporativa (Misión, Visión y Valores ABC enfocados en refrigeración eco-sostenible).
-                    </div>
-                    <div class="cv-item">
-                        • <strong>Ingeniería Organizacional:</strong> Diseño y estructuración analítica de organigramas operacionales complejos, gestionando eficientemente proyecciones operativas paralelas distribuidas en flujogramas de procesos mediante herramientas digitales avanzados.
-                    </div>
 
-                    <h4 class="cv-section-title">Indicadores de Gestión Operativa Aplicados</h4>
-                    <div class="cv-item">
-                        • <strong>Indicador de Eficiencia (Mantenimiento Técnico):</strong> Control riguroso orientado a asegurar que el 100% de los mantenimientos preventivos y correctivos de sistemas de climatización programados se ejecuten exactamente en el tiempo previsto.
-                    </div>
-                    <div class="cv-item">
-                        • <strong>Indicador de Eficacia (Calidad y Clientes):</strong> Superficie analítica y ejecución operativa dirigida a alcanzar y sostener un nivel de satisfacción total del cliente igual o superior al 90% en instalaciones térmicas industriales.
-                    </div>
+                    <h4 class="cv-segment-title">Áreas de Dominio Técnico</h4>
+                    <p class="cv-bullet-item">🔹 <strong>Legislación Mercantil:</strong> Constitución legal y trámites de registro mercantil para figuras S.A. de C.V.</p>
+                    <p class="cv-bullet-item">🔹 <strong>Ingeniería Organizacional:</strong> Estructuración de flujos corporativos paralelos y organigramas de alta complejidad.</p>
+                    <p class="cv-bullet-item">🔹 <strong>Desarrollo de Cultura (COC):</strong> Diseño estratégico de identidad y valor sustentable de marca.</p>
+
+                    <h4 class="cv-section-title">Indicadores de Control</h4>
+                    <p class="cv-p"><strong>• Eficiencia Operativa:</strong> Cumplimiento estricto del 100% de los mantenimientos predictivos e instalaciones programadas a tiempo.</p>
+                    <p class="cv-p"><strong>• Eficacia de Servicio:</strong> Meta estricta de satisfacción del cliente superior al 90% en entornos industriales HVAC.</p>
                 </div>
-
             </div>
         </section>
 
-        <section id="documentacion-pdf" class="pdf-viewer-section">
-            <h2 class="section-title" style="color: var(--secundario-oscuro);">Documentación de Ingeniería</h2>
-            <p style="text-align: center; font-size: 0.95rem; color: #556B85; max-width: 850px; margin: 0 auto; margin-bottom: 25px;">
-                Explore el archivo técnico completo de perfiles de vacantes operativas de ingeniería HVAC.
-            </p>
+        <section id="documentacion-pdf" class="pdf-section">
+            <h2 class="section-title">Perfiles de Vacantes HVAC</h2>
+            <p class="pdf-desc">Consulte los requerimientos de ingeniería de nuestro catálogo interactivo oficial.</p>
             
-            <div style="text-align: center; margin-bottom: 25px;">
-                <a href="https://drive.google.com/file/d/1jOH90b8mPr2OucjVjAvn9D_Ij7i40xdH/view?usp=sharing" target="_blank" class="btn-registro-nav" style="text-decoration: none; display: inline-block;">
-                    📄 Abrir PDF en Google Drive / Descargar
+            <div style="text-align: center; margin-bottom: 30px;">
+                <a href="https://drive.google.com/file/d/1jOH90b8mPr2OucjVjAvn9D_Ij7i40xdH/view?usp=sharing" target="_blank" class="btn-hero" style="font-size: 0.85rem;">
+                    🗂️ Ver en Pantalla Completa (Drive)
                 </a>
             </div>
 
-            <div class="pdf-frame-container">
+            <div class="pdf-box">
                 <iframe src="https://drive.google.com/file/d/1jOH90b8mPr2OucjVjAvn9D_Ij7i40xdH/preview" width="100%" height="100%" style="border: none;" allow="autoplay"></iframe>
             </div>
         </section>
 
-        <section id="registro-cv" class="window-section">
-            <h2 class="section-title">Bolsa de Trabajo: Registro de Credenciales</h2>
-            <p style="text-align: center; font-size: 0.95rem; color: #556B85; max-width: 700px; margin: 0 auto;">
-                Súmate a nuestro equipo especializado de ingeniería térmica. Rellene todos los campos de competencia solicitados a continuación para indexar su perfil profesional.
-            </p>
+        <section id="registro-cv" class="form-section">
+            <h2 class="section-title">Bolsa de Trabajo Activa</h2>
+            <p class="pdf-desc" style="margin-bottom: 30px;">Complete nuestro formulario oficial de postulación indexado directamente con el departamento de Recursos Humanos.</p>
             
-            <form onsubmit="alert('¡Información almacenada correctamente en los servidores de MSOR\'T Air Technologies!'); return false;">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">Correo Electrónico *</label>
-                        <input type="email" id="correo" required placeholder="ejemplo@correo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Número Telefónico *</label>
-                        <input type="tel" id="telefono" required placeholder="Ej. 7777-7777">
-                    </div>
-                    <div class="form-group">
-                        <label for="nacimiento">Fecha de Nacimiento *</label>
-                        <input type="date" id="nacimiento" required>
-                    </div>
+            <div class="btn-submit-container">
+                <a href="https://docs.google.com/forms/d/1JCG40B0le2nmE6X-x2I3i3taercYTBrwI_-hQt2TD9A/viewform?usp=sf_link" target="_blank" class="btn-submit-external">
+                    📋 Abrir Formulario en Pantalla Completa
+                </a>
+            </div>
 
-                    <div class="form-group">
-                        <label for="puesto">Puesto Operativo Solicitado *</label>
-                        <select id="puesto" required>
-                            <option value="">Seleccione una vacante...</option>
-                            <option value="ingeniero">Ingeniero de Proyectos (Climatización)</option>
-                            <option value="tecnico-lider">Técnico Líder de Operaciones</option>
-                            <option value="tecnico-especialista">Técnico Especialista Inverter</option>
-                            <option value="auxiliar">Auxiliar Técnico de Refrigeración</option>
-                            <option value="logistica">Encargado de Logística y Almacén</option>
-                            <option value="ventas">Ejecutivo de Ventas Comerciales</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="experiencia">Años de Experiencia Comprobables *</label>
-                        <select id="experiencia" required>
-                            <option value="">Seleccione rango...</option>
-                            <option value="0-1">Menos de 1 año</option>
-                            <option value="1-3">De 1 a 3 años</option>
-                            <option value="3-5">De 3 a 5 años</option>
-                            <option value="5+">Más de 5 años</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="certificaciones">Certificaciones de Especialidad (ASHRAE, Inverter, VRF)</label>
-                        <input type="text" id="certificaciones" placeholder="Ej. Certificación VRF Inverter LG">
-                    </div>
-                    <div class="form-group">
-                        <label for="estudios">Acreditación Académica Máxima *</label>
-                        <input type="text" id="estudios" required placeholder="Ej. Ingeniería Mecánica / Técnico en Refrigeración">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="perfil">Declaración de Perfil Profesional</label>
-                        <textarea id="perfil" rows="4" placeholder="Detalle sus destrezas técnicas en instalación, mantenimiento predictivo o balances térmicos..."></textarea>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="referencias">Referencias Comprobables (Nombre, Cargo y Teléfono)</label>
-                        <textarea id="referencias" rows="2" placeholder="Ej. Ing. René Alfaro - Gerente de Operaciones - Tel: 7111-1111"></textarea>
-                    </div>
-                </div>
-
-                <div style="text-align: center;">
-                    <button type="submit" class="btn-submit-cv">Procesar e Indexar Currículum</button>
-                </div>
-            </form>
+            <div class="forms-container">
+                <iframe src="https://docs.google.com/forms/d/1JCG40B0le2nmE6X-x2I3i3taercYTBrwI_-hQt2TD9A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Cargando formulario...</iframe>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>© 2026 MSOR'T AIR TECHNOLOGIES, S.A. DE C.V. Todos los derechos reservados.</p>
-        <p style="font-size:0.8rem; opacity:0.6; margin-top:6px;">Módulo de Práctica de la Gestión Empresarial 3.2 ─ Estructuras Administrativo Contables</p>
+        <p>© 2026 <strong>MSOR'T AIR TECHNOLOGIES, S.A. DE C.V.</strong> Todos los derechos reservados.</p>
+        <p style="margin-top: 8px; font-size: 0.75rem; opacity: 0.5;">Práctica de Gestión Empresarial (Módulo 3.2) ─ Opción Administrativo Contable</p>
     </footer>
 
 </body>
